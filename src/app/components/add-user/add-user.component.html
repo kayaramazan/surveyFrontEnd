@@ -1,0 +1,22 @@
+<div class="container-md">
+        <form #addUser="ngForm" (ngSubmit)="onSubmit(addUser.value)" >
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Kullanıcı Adı</label>
+                  <input type="text" class="form-control" required ngModel name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Departman</label>
+                  <select ngModel class="custom-select custom-select-md mb-3" name="department"> 
+                        <option  value="Yazilim">Yazılım</option>
+                        <option value="Muhasebe">Muhasebe</option>
+                        <option value="IK">IK</option>
+                      </select>
+                      
+                </div>  
+        
+                <button type="submit" class="btn btn-primary">Ekle</button>
+              </form>
+        
+              <hr>
+              <button  class="btn btn-danger"  (click)="logout()">Çıkış Yap</button>
+        </div>

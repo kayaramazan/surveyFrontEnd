@@ -1,0 +1,30 @@
+<div class="container-md">
+    <h2>Anket Atama Sayfası</h2>
+<ul class="list-group">
+        <li *ngFor="let item of users" class="list-group-item">
+         <span>   {{item.username}}
+            </span>
+            <span><button type="button" style='float:right' class="btn btn-primary" (click)="atamaSec(item.id,item.username)" >Anket Ata</button></span>
+        </li>
+       
+      </ul>
+      <br>
+      
+      <h4 > {{selectedUser}}  </h4>
+      <form #selectForm="ngForm" (ngSubmit)="onSubmit(selectForm.value)">
+      <span *ngIf="isSelect">
+        <hr>
+      <li *ngFor="let item of users"> 
+
+          <div class="form-group form-check" *ngIf="item.username != selectedUser">
+                    <input type="checkbox" ngModel name="{{item.id}}" id="{{item.id}}" class="form-check-input" required="required">
+                <label class="form-check-label" for="exampleCheck1">{{item.username}}</label>
+              </div> 
+            
+        </li>
+        <button type="submit" class="btn btn-success" >Ata</button>
+    </span>
+</form>
+<hr>
+<button  class="btn btn-danger"  (click)="logout()">Çıkış Yap</button>
+    </div> 

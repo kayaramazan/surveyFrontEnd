@@ -1,0 +1,36 @@
+<div class="container-md"> 
+      <h3>Anket Doldurmus Kullanicilar</h3>
+            <ul class="list-group">
+                        <li *ngFor="let item of users" class="list-group-item">
+                         <h3>   {{item.username | uppercase}} | 
+                               <span class="badge badge-secondary"> {{item.department}} </span> 
+                               <span>
+                                     <button type="button" style='float:right' class="btn btn-primary" (click)="showAnswer(item.id,item.username)" >Cevapları Gör</button>
+                                    </span>
+                        
+                         </h3>
+                           </li>
+                       
+                      </ul>
+              <hr>
+              <button  class="btn btn-danger"  (click)="logout()">Çıkış Yap</button>
+              <hr>
+                      <span *ngIf="selectedUser">
+                      <h1>{{selectedUser+" kullanıcısının cevapları"}}</h1>
+                  </span>
+              <span *ngFor="let item of results">
+      <div class="card">
+            <div class="card-header ">
+              {{item.username | uppercase}}
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{item.surveyQuestion}}</p>
+                <footer class="blockquote-footer">{{item.answer}}</footer>
+              </blockquote>
+            </div>
+          </div>
+        
+      </span>
+</div>
+ 

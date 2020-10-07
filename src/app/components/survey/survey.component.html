@@ -1,0 +1,22 @@
+
+<div class="container-sm">  
+        <form  #form>
+<li *ngFor="let item of listQuestions">
+    <div *ngIf ="item.soru; else elseBlock">
+            {{item.soru}} 
+    </div>
+    
+    <ng-template #elseBlock>
+        
+  <div class="form-group form-check">
+            <input type="radio" name="{{item.questionId}}" id="{{item.questionId}}"  (change)="onChangeAnswer(item)" class="form-check-input" required="required">
+        <label class="form-check-label" for="exampleCheck1">{{item.cevap}}</label>
+      </div>
+      </ng-template>
+    
+</li>
+
+<button type="button" class="btn btn-success" disabled="{{isSurveyComplete}}" (click)="submitSurvey()">Anketi Gönder</button> 
+
+</form>
+</div>

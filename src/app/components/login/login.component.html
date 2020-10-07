@@ -1,0 +1,14 @@
+
+ 
+<div class="container">  
+
+        <h3>Anket Doldurmak istediğiniz kişiyi seçiniz</h3>
+<ul class="list-group" *ngFor="let item of users">
+        <li class="list-group-item ">{{item.username | uppercase}} 
+                <button type="button" style='float:right' class="btn btn-secondary" (click)="anketSec(item.id)">Anket Doldur</button></li>
+         
+     
+      </ul>
+      <hr>
+      <button  class="btn btn-danger"  (click)="logout()">Çıkış Yap</button>
+      </div>

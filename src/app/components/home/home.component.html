@@ -1,0 +1,16 @@
+<div class="container-md">  
+    <h2>{{loginError}}</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" >
+        <div class="form-group">
+                <label for="usr">Kullanıcı Adı:</label>
+                <input type="text" name="username" ngModel class="form-control" id="usr">
+              </div>
+              <div class="form-group">
+                    <label for="usr">Şifre:</label>
+                    <input type="password" name="password" ngModel class="form-control" id="usr">
+                  </div>
+ 
+            <button type="submit" class="btn btn-primary">Giriş Yap</button> 
+
+            </form>
+</div>
