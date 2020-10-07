@@ -9,6 +9,8 @@ import { SurveyAssignComponent } from './components/survey-assign/survey-assign.
 import { CreatSurveyComponent } from './components/creat-survey/creat-survey.component';
 import { ShowResultsComponent } from './components/show-results/show-results.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { ListUserSurveyComponent } from './components/list-user-survey/list-user-survey.component';
+import { CreateCaptionComponent } from './components/create-caption/create-caption.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path:'create-survey',component:CreatSurveyComponent},
   {path:'show-results',component:ShowResultsComponent},
   {path:'add-user',component:AddUserComponent},
+  {path:'list-user-survey',component:ListUserSurveyComponent},
+  {path:'create-caption',component:CreateCaptionComponent},
   {path:'admin',component:AdminPanelComponent},
   {path:'survey/:id',component:SurveyComponent}, 
   {path:'**',component:HomeComponent}

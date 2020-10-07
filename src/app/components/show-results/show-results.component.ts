@@ -14,7 +14,6 @@ export class ShowResultsComponent implements OnInit {
   constructor(private api:ApiService,private router:Router) { 
     if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']!=1)
     this.router.navigate(['/login']) 
-
     this.api.getResultUser().subscribe(item=>{
       this.users = item
       console.log(this.users)

@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit { 
+  loggedUser = ""
   constructor(private router : Router) {  
+   
     if(!localStorage.getItem('loggedUser'))
     router.navigate(['/']) 
+    this.loggedUser  =(localStorage.getItem('loggedUser'))? JSON.parse(localStorage.getItem('loggedUser'))[0]['username'] : ""
   } 
   ngOnInit(): void {
   }

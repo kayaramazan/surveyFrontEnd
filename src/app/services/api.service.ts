@@ -43,10 +43,12 @@ export class ApiService {
     return this.http.post(this.SERVER_URL+'/api/survey/new',question)
    
   }
+  createCaption(caption): Observable<any>{ 
+    return this.http.post(this.SERVER_URL+'/api/survey/newCaption',caption)
+   
+  }
   //Kullanici ekler
-  addUser(user): Observable<any>{
-    user.password =Math.floor((Math.random() * 899999) + 100000); 
-    console.log('Olusturulan Sifre : '+user.password)
+  addUser(user): Observable<any>{ 
     return this.http.post(this.SERVER_URL+'/api/users/register',user)
   }
   //adminin show result sayfasindaki anket yapmis kullanicilari ceker
@@ -55,5 +57,8 @@ export class ApiService {
   }
   getResults(id){
     return this.http.get(this.SERVER_URL+'/api/users/results/'+id)
+  }
+  getCaptions(){
+    return this.http.get(this.SERVER_URL+'/api/survey/title')
   }
 }

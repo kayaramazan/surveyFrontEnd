@@ -15,7 +15,9 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { SurveyAssignComponent } from './components/survey-assign/survey-assign.component';
 import { CreatSurveyComponent } from './components/creat-survey/creat-survey.component';
 import { ShowResultsComponent } from './components/show-results/show-results.component';
-import { AddUserComponent } from './components/add-user/add-user.component'; 
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { ListUserSurveyComponent } from './components/list-user-survey/list-user-survey.component';
+import { CreateCaptionComponent } from './components/create-caption/create-caption.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
      SurveyAssignComponent,
      CreatSurveyComponent,
      ShowResultsComponent,
-     AddUserComponent
+     AddUserComponent,
+     ListUserSurveyComponent,
+     CreateCaptionComponent
   ],
   imports: [
     BrowserModule,

@@ -12,12 +12,17 @@ export class SurveyAssignComponent implements OnInit {
   selectedUser = ""
   selectedUserId :number 
   isSelect = false
+  surveyCaptions:any[]=[]
   constructor(private api:ApiService,private router:Router) { 
     if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']!=1)
       this.router.navigate(['/login']) 
 
     this.api.getUser().subscribe((item)=>{
       this.users=item;
+    })
+    this.api.getCaptions().subscribe((result:any[]) =>{
+      this.surveyCaptions = result
+      console.log(this.surveyCaptions)
     })
   }
 
