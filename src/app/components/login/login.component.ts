@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
     })
   }
   
-  anketSec(id:number){
-    console.log(id,'kisisi icin anket secildi')
+  anketSec(id:number,surveyCaptionId:number){  
+    localStorage.setItem('surveyCaptionId',surveyCaptionId.toString());
     this.router.navigate(['survey',id])
   }
   logout(){

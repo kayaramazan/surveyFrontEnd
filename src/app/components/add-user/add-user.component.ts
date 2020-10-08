@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { func } from 'src/app/classes/func';
 
 @Component({
   selector: 'app-add-user',
@@ -15,6 +16,8 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(values){
+    if(new func().confirmModal())
+    {
       this.api.addUser(values).subscribe(result =>{
         if(result.success)
         { 
@@ -24,6 +27,7 @@ export class AddUserComponent implements OnInit {
         alert('Bu kullanici adi zaten mevcut')
         }
       })
+    }  
   }
   logout(){
     localStorage.clear()

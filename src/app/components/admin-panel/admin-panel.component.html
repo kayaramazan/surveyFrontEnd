@@ -1,30 +1,74 @@
-<div class="container col-md-8">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+
+<app-menu></app-menu> 
+  <div class="container col-md-7 h-50"> 
+      <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Anketler</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Anket Ismi</th>
+                <th>Olusturma Tarihi</th> 
+                <th>Islemler</th> 
+              </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of titles">
+                      <td>{{item.surveyTitle}}</td>
+                      <td>{{item.createdDate}}
+                      </td>
+                      <td><button  class="btn btn-primary"  (click)="sorulariGor(item.id)">Sorulari Gor</button> &nbsp;
+                          <button  class="btn btn-info"  (click)="soruEkle()">Soru Ekle</button> &nbsp;
+                          <button  class="btn btn-danger"  (click)="anketSil(item.id)">Sil</button>
+                      </td> 
+                    </tr>
+              </tbody>
+              
+            </table>
+            
+          </div>
+       
+        </div>
+        <a  class="btn btn-success " href="/create-caption"  ><i class="nav-icon far fa-plus"></i> Anket Olustur</a>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Kullanıcılar</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Kullanici Ismi</th>
+                  <th>Departman</th> 
+                  <th>Islemler</th> 
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of users">
+                        <td>{{item.username}}</td>
+                        <td>{{item.department}}
+                        </td> 
+                        <td> 
+                            <button  class="btn btn-info"  (click)="anketAta()">Anket Ata</button> &nbsp;
+                            <button  class="btn btn-danger"  (click)="kullaniciSil(item.id)">Sil</button>
+                        </td> 
+                      </tr>
+                </tbody>
                 
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                      <li class="nav-item active">
-                          <a class="nav-link" href="/create-caption">Anket Olustur </a>
-                        </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/create-survey">Soru Ekle </a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/survey-assign">Anket Ata</a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/add-user">Kullanıcı Ekle</a>
-                      </li>
-                      <li class="nav-item active">
-                          <a class="nav-link" href="/show-results">Sonuçları Gör</a>
-                        </li>
-                  </ul>
-                   
-                </div>
-              </nav>
-
-              <hr>
-              <button  class="btn btn-danger cikis"  (click)="logout()">Çıkış Yap</button>
-
-    </div> 
+              </table>
+              
+            </div>
+         
+          </div>
+          <a  class="btn btn-success " href="/add-user"  ><i class="nav-icon far fa-plus"></i> Kullanici Olustur</a>
+        
+        <button  class="btn btn-danger cikis"  (click)="logout()">Çıkış Yap</button>
+        
+        
+</div> 

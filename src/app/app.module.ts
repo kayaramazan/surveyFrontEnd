@@ -17,7 +17,9 @@ import { CreatSurveyComponent } from './components/creat-survey/creat-survey.com
 import { ShowResultsComponent } from './components/show-results/show-results.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ListUserSurveyComponent } from './components/list-user-survey/list-user-survey.component';
-import { CreateCaptionComponent } from './components/create-caption/create-caption.component'; 
+import { CreateCaptionComponent } from './components/create-caption/create-caption.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ShowQuestionComponent } from './components/show-question/show-question.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { CreateCaptionComponent } from './components/create-caption/create-capti
      ShowResultsComponent,
      AddUserComponent,
      ListUserSurveyComponent,
-     CreateCaptionComponent
+     CreateCaptionComponent,
+     MenuComponent,
+     ShowQuestionComponent
   ],
   imports: [
     BrowserModule,

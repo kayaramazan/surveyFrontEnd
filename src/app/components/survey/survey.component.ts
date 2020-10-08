@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router'; 
+import { func } from 'src/app/classes/func';
 
 @Component({
   selector: 'app-survey',
@@ -8,8 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./survey.component.css']
 })
 export class SurveyComponent implements OnInit {
-
-  listQuestions = [] 
+  listQuestions:any[] = [] 
   selectedAnswers : any[] = []
   questions: any[] = []
   questionCount = 0 
@@ -19,31 +19,36 @@ export class SurveyComponent implements OnInit {
       router.navigate(['/'])
    }
   ngOnInit(): void {
-    
-    this.api.getQuestions().subscribe((item: any[]) => {
-      this.questions = item 
-      
-      var count = this.questions.length
-      for (let i = 0; i < count/4; i++) { 
-        this.questionCount++;
-        var len = this.questions.filter(e => e.surveyQuestion == this.questions[i].surveyQuestion).length
-        this.listQuestions.push({ soru: this.questions[i * len].surveyQuestion })
-        
-        for (let j = 0; j < 4; j++) {
-          this.listQuestions.push({ cevap: this.questions[i * 4 + j].answer, questionId: this.questions[i * len + j].id,answerId:this.questions[i * len + j].cevapId })
-
-        }
-      }
-      this.questions = this.listQuestions
-
+    console.log(localStorage.getItem('surveyCaptionId'))
+    this.api.getQuestions(localStorage.getItem('surveyCaptionId')).subscribe((item: any[]) => { 
+      this.listQuestions = this.questionMaker(item) 
     })
 
   }
+  questionMaker(item:any[]){
+
+    var listQuestions:any[] = [] 
+    var count = item.length
+    for (let i = 0; i < count/4; i++) { 
+      this.questionCount++;
+      var len = item.filter(e => e.surveyQuestion == item[i].surveyQuestion).length
+      listQuestions.push({ soru: item[i * len].surveyQuestion })
+      
+      for (let j = 0; j < 4; j++) {
+        listQuestions.push({ cevap: item[i * 4 + j].answer, questionId: item[i * len + j].id,answerId:item[i * len + j].cevapId })
+
+      }
+    }
+    return listQuestions
+  }
   submitSurvey(){  
-    
+    if(new func().confirmModal("Anket gönderilsin mi?"))
+    {
     var surveyUserId = this.router.url.split('/')[2]
     var userId  = JSON.parse(localStorage.getItem('loggedUser'))[0]['id']
-    var answers = {results:this.selectedAnswers,surveyUserId:surveyUserId,userId:userId} 
+    var surveyCaptionId  = localStorage.getItem('surveyCaptionId')
+
+    var answers = {results:this.selectedAnswers,surveyUserId:surveyUserId,userId:userId,surveyCaptionId:surveyCaptionId } 
     console.log(answers)
     this.api.sendSurvey(answers).subscribe((result:{succes:boolean}) =>
       {
@@ -51,6 +56,8 @@ export class SurveyComponent implements OnInit {
           this.router.navigate(['/complete'])
         }
       })
+ 
+    }
   }
   onChangeAnswer(item)
   { 
@@ -69,7 +76,7 @@ export class SurveyComponent implements OnInit {
       {
         this.isSurveyComplete="" 
       }
-  }
+  } 
     
     
 

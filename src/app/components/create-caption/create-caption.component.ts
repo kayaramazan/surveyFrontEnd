@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+import { func } from 'src/app/classes/func';
 
 @Component({
   selector: 'app-create-caption',
@@ -8,12 +10,14 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CreateCaptionComponent implements OnInit {
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService,private router: Router) { }
 
   ngOnInit(): void {
   }
   onSubmit(values){
      
+    if(new func().confirmModal())
+    {
     this.api.createCaption(values).subscribe(result =>
       {
         if(result.success)
@@ -26,5 +30,11 @@ export class CreateCaptionComponent implements OnInit {
           alert('Hata Olustu')
         }
       })
+    }
+  }
+
+  logout(){
+    localStorage.clear()
+    this.router.navigate(['/'])
   }
 }

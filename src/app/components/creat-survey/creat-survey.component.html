@@ -1,3 +1,4 @@
+<app-menu ></app-menu> 
 <div class="container col-md-5">
 
     <div style="height: 50px"></div>
@@ -6,7 +7,8 @@
         <label for="exampleInputPassword1">Anket Secin</label>
         <select ngModel class="custom-select custom-select-md mb-3" name="surveyCaptionId"> 
 
-              <option *ngFor="let item of surveyCaptions"  value="{{item.id}}">{{item.surveyTitle}}</option> 
+          <option >Cevap Seciniz</option> 
+              <option *ngFor="let item of surveyCaptions"  value="{{item.id}}">{{item.id}} {{item.surveyTitle}}</option> 
             </select> 
       </div>  
         <div class="form-group">

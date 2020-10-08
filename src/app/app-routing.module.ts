@@ -11,6 +11,7 @@ import { ShowResultsComponent } from './components/show-results/show-results.com
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ListUserSurveyComponent } from './components/list-user-survey/list-user-survey.component';
 import { CreateCaptionComponent } from './components/create-caption/create-caption.component';
+import { ShowQuestionComponent } from './components/show-question/show-question.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'survey-assign',component:SurveyAssignComponent},
   {path:'create-survey',component:CreatSurveyComponent},
   {path:'show-results',component:ShowResultsComponent},
+  {path:'show-question/:id',component:ShowQuestionComponent},
   {path:'add-user',component:AddUserComponent},
   {path:'list-user-survey',component:ListUserSurveyComponent},
   {path:'create-caption',component:CreateCaptionComponent},

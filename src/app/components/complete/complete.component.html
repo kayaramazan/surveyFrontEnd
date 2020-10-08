@@ -1,4 +1,5 @@
-<div class="container-sm">
+<div class="container col-md-5">
+      <div style="height:50px"></div>
 <div class="alert alert-success" role="alert">
        <h2 class="text-center">Anket tamamlandi !!</h2>
       </div>
@@ -6,10 +7,9 @@
             <div class="row text-center">
               <div class="col">
                     <button type="button" routerLink="login" class="btn btn-primary">Diğer Anketleri Gor</button>
-              </div>
-              <div class="col">
-                    <button type="button" (click)="logout()" class="btn btn-danger cikis">Çıkış Yap</button>
-                  
-              </div>
+              </div> 
+                   
             </div>
+            <button type="button" (click)="logout()" class="btn btn-danger cikis">Çıkış Yap</button>
+                   
     </div>

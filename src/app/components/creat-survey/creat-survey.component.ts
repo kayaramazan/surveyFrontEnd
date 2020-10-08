@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import { func } from 'src/app/classes/func';
 @Component({
   selector: 'app-creat-survey',
   templateUrl: './creat-survey.component.html',
@@ -22,7 +23,9 @@ export class CreatSurveyComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(values){
-    
+    if(new func().confirmModal())
+    {
+    console.log(values)
     var question = {surveyCaptionId:values.surveyCaptionId,answers :[values.c1,values.c2,values.c3,values.c4],question:values.question}
     console.log(question)
     this.api.createSurvey(question).subscribe(result =>
@@ -37,6 +40,7 @@ export class CreatSurveyComponent implements OnInit {
           alert('Hata Olustu')
         }
       })
+    }
   }
 
   logout(){

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit { 
   loggedUser = ""
+  adminMenu = false;
+  userMenu = false
   constructor(private router : Router) {  
    
     if(!localStorage.getItem('loggedUser'))
@@ -16,5 +18,16 @@ export class HeaderComponent implements OnInit {
   } 
   ngOnInit(): void {
   }
-
+  menuChange(option){
+    if(option == 1)
+    {
+      this.userMenu = false
+      this.adminMenu = true
+    }
+    else
+    {
+      this.adminMenu = false
+      this.userMenu = true
+    }
+  }
 }

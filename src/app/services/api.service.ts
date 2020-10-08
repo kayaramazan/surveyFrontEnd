@@ -14,8 +14,9 @@ export class ApiService {
     return this.http.get(this.SERVER_URL+'/api/users');
   }
   //Anket sorularini cekme
-  getQuestions(): Observable<any>{
-    return this.http.get(this.SERVER_URL+'/api/survey/questions');
+  getQuestions(surveyCaptionId): Observable<any>{
+    console.log(surveyCaptionId)
+    return this.http.get(this.SERVER_URL+'/api/survey/questions/'+surveyCaptionId);
   }
   //Giris
   login(username,password): Observable<any>
@@ -60,5 +61,14 @@ export class ApiService {
   }
   getCaptions(){
     return this.http.get(this.SERVER_URL+'/api/survey/title')
+  }
+
+  //Kullanici sile
+  deleteUser(user): Observable<any>{ 
+    return this.http.post(this.SERVER_URL+'/api/users/delete',user)
+  }
+  //Delete survey
+  deleteSurvey(user): Observable<any>{ 
+    return this.http.post(this.SERVER_URL+'/api/survey/delete',user)
   }
 }

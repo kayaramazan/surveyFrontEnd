@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { func } from 'src/app/classes/func';
 
 @Component({
   selector: 'app-survey-assign',
@@ -36,6 +37,8 @@ export class SurveyAssignComponent implements OnInit {
     console.log('secilen',id)
   }
   onSubmit(values){
+    if(new func().confirmModal())
+    {
     this.api.assignSurvey(this.selectedUserId,values).subscribe(
       (item:{success:boolean})=>
       {
@@ -48,7 +51,7 @@ export class SurveyAssignComponent implements OnInit {
         }, 1000);
       }
     })
-    
+  }
   }
   
   logout(){
