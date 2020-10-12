@@ -1,0 +1,55 @@
+<app-menu></app-menu>
+<div class="container col-md-8 h-50">
+        <div>
+                <div>
+                  <div style="display: block">
+                    <canvas baseChart
+                      [datasets]="barChartData"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptions" 
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType">
+                    </canvas>
+                  </div>
+                  <button  class="btn btn-primary" (click)="randomize()">Guncelle</button>
+                </div>
+              </div>
+              <br><br>
+
+              <div class="card" *ngIf="results.length">
+                    <div class="card-header">
+                      <h3 class="card-title">Kullanici Sonuclari</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>Kullanıcı İsmi</th> 
+                          <th>Hakkinda Cevaplanan Soru Sayisi</th> 
+                          <th>Toplam Puan</th> 
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of results">
+                                <td>
+                                  {{item.username}}  
+                                </td>
+                                 
+                                <td> 
+                                    {{item.qCount}}
+                                </td> 
+                                <td>
+                                   {{item.score}}
+                                  
+                                  </td>
+                              </tr>
+                        </tbody>
+                        
+                      </table>
+                      
+                    </div>
+                 
+                  </div>
+</div>
+

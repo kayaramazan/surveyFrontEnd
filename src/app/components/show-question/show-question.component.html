@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div class="container col-md-6 h-50">
-
+<div *ngIf="listQuestions.length else elseBlock2">
 <div class="card" *ngFor="let item of listQuestions">
     <span>
             <div class="card-header h4">
@@ -11,5 +11,10 @@
     <ng-template #elseBlock> 
          <li class="h6">{{item.cevap}}</li>  
     </ng-template>
+    
       </div>
+    </div>
+      <ng-template #elseBlock2> 
+        <li class="h2">Kayit Bulunamadi</li>  
+   </ng-template>
     </div>

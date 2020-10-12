@@ -12,12 +12,12 @@ export class  func
 
     var listQuestions:any[] = [] 
     var count = item.length
-    for (let i = 0; i < count/4; i++) {  
+    for (let i = 0; i < count/5; i++) {  
       var len = item.filter(e => e.surveyQuestion == item[i].surveyQuestion).length
       listQuestions.push({ soru: item[i * len].surveyQuestion })
       
-      for (let j = 0; j < 4; j++) {
-        listQuestions.push({ cevap: item[i * 4 + j].answer, questionId: item[i * len + j].id,answerId:item[i * len + j].cevapId })
+      for (let j = 0; j < 5; j++) {
+        listQuestions.push({ cevap: item[i * 5 + j].answer, questionId: item[i * len + j].id,answerId:item[i * len + j].cevapId })
 
       }
     }

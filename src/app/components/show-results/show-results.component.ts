@@ -9,29 +9,42 @@ import { Router } from '@angular/router';
 })
 export class ShowResultsComponent implements OnInit {
   users:any[]=[]
+  answers:any[]=[]
   results:any[]= []
   selectedUser = ""
+  TutorialName = ""
+  count = 0
   constructor(private api:ApiService,private router:Router) { 
-    if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']!=1)
+    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
     this.router.navigate(['/login']) 
     this.api.getResultUser().subscribe(item=>{
-      this.users = item
-      console.log(this.users)
-    })
-  }
+      this.users = item  
 
+    console.log(this.users)
+    this.users.forEach(
+      element => 
+      {
+        this.api.getResults(element.id).subscribe((item:any) =>
+        { 
+          this.answers.push(item) 
+        }) 
+      })
+ 
+    })
+  } 
   ngOnInit(): void {
   }
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
-  showAnswer(id,username)
-  {
-    this.selectedUser = username
-    this.api.getResults(id).subscribe((item:any) =>
+  showAnswer(captionId,id,userId)
+  {  
+    var post={captionId,id,userId} 
+    this.api.getResultsFilter(post).subscribe((item:any) =>
     {
-      this.results=item 
+      sessionStorage.setItem('answers',JSON.stringify(item)); 
+      this.router.navigate(['/list-answer-filtered'])  
     }) 
   }
 }

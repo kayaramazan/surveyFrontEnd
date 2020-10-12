@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   
   constructor(private api:ApiService,private router : Router) {  
-    if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']==1)
+    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']==1)
       { 
         this.router.navigate(['/admin']) 
       }else
@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit {
   }
   
   anketSec(id:number,surveyCaptionId:number){  
-    localStorage.setItem('surveyCaptionId',surveyCaptionId.toString());
+    sessionStorage.setItem('surveyCaptionId',surveyCaptionId.toString());
     this.router.navigate(['survey',id])
   }
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
 
    

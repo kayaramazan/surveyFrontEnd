@@ -15,12 +15,12 @@ export class SurveyComponent implements OnInit {
   questionCount = 0 
   isSurveyComplete = "disabled"
   constructor(private api: ApiService,private router:Router) {
-    if(!localStorage.getItem('loggedUser')) 
+    if(!sessionStorage.getItem('loggedUser')) 
       router.navigate(['/'])
    }
   ngOnInit(): void {
-    console.log(localStorage.getItem('surveyCaptionId'))
-    this.api.getQuestions(localStorage.getItem('surveyCaptionId')).subscribe((item: any[]) => { 
+    console.log(sessionStorage.getItem('surveyCaptionId'))
+    this.api.getQuestions(sessionStorage.getItem('surveyCaptionId')).subscribe((item: any[]) => { 
       this.listQuestions = this.questionMaker(item) 
     })
 
@@ -29,13 +29,13 @@ export class SurveyComponent implements OnInit {
 
     var listQuestions:any[] = [] 
     var count = item.length
-    for (let i = 0; i < count/4; i++) { 
+    for (let i = 0; i < count/5; i++) { 
       this.questionCount++;
       var len = item.filter(e => e.surveyQuestion == item[i].surveyQuestion).length
       listQuestions.push({ soru: item[i * len].surveyQuestion })
       
-      for (let j = 0; j < 4; j++) {
-        listQuestions.push({ cevap: item[i * 4 + j].answer, questionId: item[i * len + j].id,answerId:item[i * len + j].cevapId })
+      for (let j = 0; j < 5; j++) {
+        listQuestions.push({ cevap: item[i * 5 + j].answer, questionId: item[i * len + j].id,answerId:item[i * len + j].cevapId })
 
       }
     }
@@ -45,8 +45,8 @@ export class SurveyComponent implements OnInit {
     if(new func().confirmModal("Anket gönderilsin mi?"))
     {
     var surveyUserId = this.router.url.split('/')[2]
-    var userId  = JSON.parse(localStorage.getItem('loggedUser'))[0]['id']
-    var surveyCaptionId  = localStorage.getItem('surveyCaptionId')
+    var userId  = JSON.parse(sessionStorage.getItem('loggedUser'))[0]['id']
+    var surveyCaptionId  = sessionStorage.getItem('surveyCaptionId')
 
     var answers = {results:this.selectedAnswers,surveyUserId:surveyUserId,userId:userId,surveyCaptionId:surveyCaptionId } 
     console.log(answers)

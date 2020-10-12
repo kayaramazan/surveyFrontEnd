@@ -8,6 +8,7 @@ HttpClient
   providedIn: 'root'
 })
 export class ApiService {
+  
   private SERVER_URL = environment.SERVER_URL
   constructor(private http:HttpClient) { }
   getUser(): Observable<any> { 
@@ -31,7 +32,7 @@ export class ApiService {
   }
   //Kullanicilarin yapmasi gereken anketleri ceker
   getSurveyUser(): Observable<any> { 
-    let userId=JSON.parse(localStorage.getItem('loggedUser'))[0]['id']
+    let userId=JSON.parse(sessionStorage.getItem('loggedUser'))[0]['id']
     return this.http.get(this.SERVER_URL+'/api/users/'+userId);
   }
   //Kullanicilara anket atama
@@ -59,16 +60,34 @@ export class ApiService {
   getResults(id){
     return this.http.get(this.SERVER_URL+'/api/users/results/'+id)
   }
+  getResultsById(id){
+    return this.http.get(this.SERVER_URL+'/api/users/resultsById/'+id)
+  }
+  getResultsFilter(post){
+    return this.http.post(this.SERVER_URL+'/api/users/results',post)
+  }
   getCaptions(){
     return this.http.get(this.SERVER_URL+'/api/survey/title')
   }
-
+  getTotalResult(){
+    return this.http.get(this.SERVER_URL+'/api/users/totalResult')
+  }
   //Kullanici sile
   deleteUser(user): Observable<any>{ 
-    return this.http.post(this.SERVER_URL+'/api/users/delete',user)
+    return this.http.post(this.SERVER_URL+'/api/users/delete',{userId:user})
   }
   //Delete survey
   deleteSurvey(user): Observable<any>{ 
-    return this.http.post(this.SERVER_URL+'/api/survey/delete',user)
+    console.log(user)
+    return this.http.post(this.SERVER_URL+'/api/survey/delete',{captionId:user})
   }
+  showSurveyById(id)
+  {
+    return this.http.get(this.SERVER_URL+'/api/survey/listById/'+id);
+    
+  }
+  removeAssign(assignId) {
+    return this.http.post(this.SERVER_URL+'/api/users/removeAssign',{assignId})
+  }
+  
 }

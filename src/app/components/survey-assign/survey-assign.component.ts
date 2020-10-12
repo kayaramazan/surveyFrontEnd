@@ -15,7 +15,7 @@ export class SurveyAssignComponent implements OnInit {
   isSelect = false
   surveyCaptions:any[]=[]
   constructor(private api:ApiService,private router:Router) { 
-    if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']!=1)
+    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
       this.router.navigate(['/login']) 
 
     this.api.getUser().subscribe((item)=>{
@@ -55,8 +55,8 @@ export class SurveyAssignComponent implements OnInit {
   }
   
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/'; 
   }
 
 }

@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Route, Router } from '@angular/router';  
 import { SurveyComponent } from '../survey/survey.component';
 import { func } from '../../classes/func';
+import { ThirdPartyDraggable } from '@fullcalendar/interaction';
 
 @Component({
   selector: 'app-admin-panel',
@@ -12,6 +13,7 @@ import { func } from '../../classes/func';
 export class AdminPanelComponent implements OnInit {
    titles:any[]=[]
    users:any[]=[]
+   userSurveys: any[]=[]
   constructor(private api:ApiService,private router:Router) {  
     this.api.getCaptions().subscribe((item:any)=>{
       this.titles = item; 
@@ -22,22 +24,26 @@ export class AdminPanelComponent implements OnInit {
     
    
 
-    if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']!=1)
+    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
       this.router.navigate(['/login']) 
   }
 
   ngOnInit(): void {
   }
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
   anketSil(id)
   {
    if(new func().confirmModal())
    {
-    //  anket silme islemleri yapilicak
-     console.log('silindi')
+    this.api.deleteSurvey(id).subscribe(item=>{
+      if(item.success){
+        alert('Anket Silindi') 
+        window.location.reload()
+      }
+    }) 
    }
   }
   soruEkle(){
@@ -54,10 +60,14 @@ export class AdminPanelComponent implements OnInit {
     {
      this.api.deleteUser(id).subscribe(item=>{
        if(item.success){
-         alert('Kullanici Silindi')
+        alert('Kullanici Silindi') 
+        window.location.reload()
        }
-     })
-      console.log('silindi')
+     }) 
     }
   }
+  anketGor(id){ 
+    this.router.navigate(['/show-assign-survey/'+id])
+  }
+   
 }

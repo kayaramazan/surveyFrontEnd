@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class CompleteComponent implements OnInit {
 
   constructor(private router:Router) { 
-    if(!localStorage.getItem('loggedUser'))
+    if(!sessionStorage.getItem('loggedUser'))
       router.navigate(['/'])
   }
 
@@ -17,7 +17,7 @@ export class CompleteComponent implements OnInit {
   }
 
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
 }

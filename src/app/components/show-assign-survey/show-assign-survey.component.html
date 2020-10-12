@@ -1,0 +1,42 @@
+
+<app-menu></app-menu> 
+<div class="container col-md-7 h-50"> 
+<div class="card" *ngIf="userSurveys.length">
+        <div class="card-header">
+          <h3 class="card-title">Atanmis Anketler</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Kullanıcı İsmi</th> 
+              <th>Anket Adı</th> 
+              <th>İşlemler</th> 
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userSurveys">
+                    <td>
+                      {{item.username}} 
+                      <span class="badge badge-secondary"> {{item.department}} </span> 
+                    </td>
+                     
+                    <td> 
+                        {{item.surveyTitle}}
+                    </td> 
+                    <td>
+                      <button class="btn btn-danger" (click)="removeAssign(item.surveyAssignId)">Kaldır</button>
+                      
+                      </td>
+                  </tr>
+            </tbody>
+            
+          </table>
+          
+        </div>
+     
+      </div>
+      </div>
+
+<button  class="btn btn-danger cikis"  (click)="logout()">Çıkış Yap</button>

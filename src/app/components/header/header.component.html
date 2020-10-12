@@ -3,7 +3,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4 col-md-2" style="position: fixed">
         <!-- Brand Logo -->
-        <a href="/" class="brand-link">
+        <a routerLink="/" class="brand-link">
           <img src="https://www.kentkart.com/wp-content/uploads/2017/02/logo.png" alt="AdminLTE Logo" class="brand-image elevation-3"
                style="opacity: .8">
           <span class="brand-text font-weight-light">&nbsp;&nbsp;&nbsp; </span>
@@ -12,7 +12,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div *ngIf="loggedUser" class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img src="/assets/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
             </div>

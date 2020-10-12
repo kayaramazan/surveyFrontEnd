@@ -7,7 +7,7 @@
         <label for="exampleInputPassword1">Anket Secin</label>
         <select ngModel class="custom-select custom-select-md mb-3" name="surveyCaptionId"> 
 
-          <option >Cevap Seciniz</option> 
+          <option >Seciniz</option> 
               <option *ngFor="let item of surveyCaptions"  value="{{item.id}}">{{item.id}} {{item.surveyTitle}}</option> 
             </select> 
       </div>  
@@ -15,22 +15,53 @@
           <label for="exampleInputEmail1">Soru</label>
           <input type="text" class="form-control" required ngModel name="question" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Cevap 1</label>
-          <input type="text" class="form-control" required ngModel name="c1" id="exampleInputPassword1" placeholder="">
+
+
+        <label for="exampleInputPassword1" >Cevap 1</label>
+        <label for="exampleInputPassword1" style="float: right; margin-right: 20px;">Puan</label>
+        <div class="form-group row">
+          &nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-10 " required ngModel name="c1" id="exampleInputPassword1" placeholder="">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-1 " required ngModel name="score1" values="1" id="exampleInputPassword1" placeholder="1">
+         
         </div> 
-        <div class="form-group">
-                <label for="exampleInputPassword1">Cevap 2</label>
-                <input type="text" class="form-control" required ngModel name="c2" id="exampleInputPassword1" placeholder="">
-              </div> 
-        <div class="form-group">
-            <label for="exampleInputPassword1">Cevap 3</label>
-            <input type="text" class="form-control" required ngModel name="c3" id="exampleInputPassword1" placeholder="">
-            </div> 
-        <div class="form-group">
-            <label for="exampleInputPassword1">Cevap 4</label>
-            <input type="text" class="form-control" required ngModel name="c4" id="exampleInputPassword1" placeholder="">
-            </div> 
+        <label for="exampleInputPassword1" >Cevap 2</label>
+        <label for="exampleInputPassword1" style="float: right; margin-right: 20px;">Puan</label>
+        <div class="form-group row">
+          &nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-10 " required ngModel name="c2" id="exampleInputPassword1" placeholder="">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-1 " required ngModel name="score2" values="2" id="exampleInputPassword1" placeholder="2">
+         
+        </div> 
+        <label for="exampleInputPassword1" >Cevap 3</label>
+        <label for="exampleInputPassword1" style="float: right; margin-right: 20px;">Puan</label>
+        <div class="form-group row">
+          &nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-10 " required ngModel name="c3" id="exampleInputPassword1" placeholder="">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-1 " required ngModel name="score3" values="3" id="exampleInputPassword1" placeholder="3">
+         
+        </div> 
+        <label for="exampleInputPassword1" >Cevap 4</label>
+        <label for="exampleInputPassword1" style="float: right; margin-right: 20px;">Puan</label>
+        <div class="form-group row">
+          &nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-10 " required ngModel name="c4" id="exampleInputPassword1" placeholder="">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-1 " required ngModel name="score4" values="4" id="exampleInputPassword1" placeholder="4">
+         
+        </div> 
+        <label for="exampleInputPassword1" >Cevap 5</label>
+        <label for="exampleInputPassword1" style="float: right; margin-right: 20px;">Puan</label>
+        <div class="form-group row">
+          &nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-10 " required ngModel name="c5" id="exampleInputPassword1" placeholder="">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control col-md-1 " required ngModel name="score5" values="5" id="exampleInputPassword1" placeholder="5">
+         
+        </div> 
 
         <button type="submit" class="btn btn-primary">Ekle</button>
       </form>

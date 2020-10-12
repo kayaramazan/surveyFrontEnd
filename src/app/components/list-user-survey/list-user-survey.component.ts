@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class ListUserSurveyComponent implements OnInit {
 
   results:any[]= []
-  id = JSON.parse(localStorage.getItem('loggedUser'))[0]['id']
+  id = JSON.parse(sessionStorage.getItem('loggedUser'))[0]['id']
 
   constructor(private api:ApiService,private router : Router) {
     this.showAnswer(this.id)
@@ -20,13 +20,14 @@ export class ListUserSurveyComponent implements OnInit {
   }
   showAnswer(id)
   { 
-    this.api.getResults(id).subscribe((item:any) =>
+    this.api.getResultsById(id).subscribe((item:any) =>
     {
       this.results=item 
+      console.log(item)
     }) 
   }
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
 }

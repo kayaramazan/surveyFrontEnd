@@ -16,7 +16,7 @@ export class CreatSurveyComponent implements OnInit {
       this.surveyCaptions = result
       console.log(this.surveyCaptions)
     })
-    if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']!=1)
+    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
       this.router.navigate(['/login']) 
    }
 
@@ -26,7 +26,17 @@ export class CreatSurveyComponent implements OnInit {
     if(new func().confirmModal())
     {
     console.log(values)
-    var question = {surveyCaptionId:values.surveyCaptionId,answers :[values.c1,values.c2,values.c3,values.c4],question:values.question}
+    var question = {
+      surveyCaptionId:values.surveyCaptionId,
+      answers :
+      [
+        {cevap:values.c1,score:values.score1},
+        {cevap:values.c2,score:values.score2},
+        {cevap:values.c3,score:values.score3},
+        {cevap:values.c4,score:values.score4},
+        {cevap:values.c5,score:values.score5}
+      ],
+      question:values.question}
     console.log(question)
     this.api.createSurvey(question).subscribe(result =>
       {
@@ -44,8 +54,8 @@ export class CreatSurveyComponent implements OnInit {
   }
 
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
 
 }

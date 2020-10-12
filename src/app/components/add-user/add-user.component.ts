@@ -30,7 +30,7 @@ export class AddUserComponent implements OnInit {
     }  
   }
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
 }

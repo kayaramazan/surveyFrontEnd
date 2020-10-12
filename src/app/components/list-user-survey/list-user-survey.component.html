@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col-md-5 h-50">
               <span *ngFor="let item of results">
                 <div class="card">
                     <div class="card-header ">
@@ -6,8 +6,8 @@
                     </div>
                     <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p>{{item.surveyQuestion}}</p>
-                        <footer class="blockquote-footer">{{item.answer}}</footer>
+                        <p>{{item.surveyQuestion}} | {{item.surveyTitle}} </p>
+                        <footer class="blockquote-footer">" {{item.answer}} "  | Score: {{item.score}}</footer>
                     </blockquote>
                     </div>
                 </div> 

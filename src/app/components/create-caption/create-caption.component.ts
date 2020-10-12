@@ -10,7 +10,10 @@ import { func } from 'src/app/classes/func';
 })
 export class CreateCaptionComponent implements OnInit {
 
-  constructor(private api:ApiService,private router: Router) { }
+  constructor(private api:ApiService,private router: Router) { 
+    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
+      this.router.navigate(['/login']) 
+  }
 
   ngOnInit(): void {
   }
@@ -34,7 +37,7 @@ export class CreateCaptionComponent implements OnInit {
   }
 
   logout(){
-    localStorage.clear()
-    this.router.navigate(['/'])
+    sessionStorage.clear()
+    window.location.href='/';
   }
 }

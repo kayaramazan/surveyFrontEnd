@@ -12,9 +12,9 @@ ApiService
 export class HomeComponent implements OnInit {
   loginError = ""
   constructor(private router:Router,private api:ApiService) { 
-    if(localStorage.getItem('loggedUser'))
+    if(sessionStorage.getItem('loggedUser'))
     { 
-      console.log(localStorage.getItem('loggedUser'))
+      console.log(sessionStorage.getItem('loggedUser'))
 
       router.navigate(['/login'])
     } 
@@ -27,17 +27,19 @@ export class HomeComponent implements OnInit {
     var result = this.api.login(data.username,data.password).subscribe(data => {
       if(data)
       {
-        localStorage.setItem('loggedUser',JSON.stringify(data)) 
-        JSON.parse(localStorage.getItem('loggedUser'))[0]['username']
-        if(JSON.parse(localStorage.getItem('loggedUser'))[0]['authority']==1)
-        { 
-          this.router.navigate(['/admin']) 
+        sessionStorage.setItem('loggedUser',JSON.stringify(data)) 
+        JSON.parse(sessionStorage.getItem('loggedUser'))[0]['username']
+        if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']==1)
+        {  
+          window.location.href='/admin';
         }else
-        this.router.navigate(['/login']) 
+         window.location.href='/login';
     
       }
+    }).add(()=>{
+      this.loginError="Kullanıcı adı veya şifre yanlış"
+
     })
-    this.loginError="Kullanıcı adı veya şifre yanlış"
 
     
      
