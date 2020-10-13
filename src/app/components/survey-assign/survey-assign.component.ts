@@ -15,15 +15,12 @@ export class SurveyAssignComponent implements OnInit {
   isSelect = false
   surveyCaptions:any[]=[]
   constructor(private api:ApiService,private router:Router) { 
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-      this.router.navigate(['/login']) 
-
+     
     this.api.getUser().subscribe((item)=>{
       this.users=item;
     })
     this.api.getCaptions().subscribe((result:any[]) =>{
-      this.surveyCaptions = result
-      console.log(this.surveyCaptions)
+      this.surveyCaptions = result 
     })
   }
 
@@ -33,29 +30,27 @@ export class SurveyAssignComponent implements OnInit {
   {
     this.selectedUser=username
     this.selectedUserId=id;
-    this.isSelect = true
-    console.log('secilen',id)
+    this.isSelect = true 
   }
   onSubmit(values){
     if(new func().confirmModal())
     {
     this.api.assignSurvey(this.selectedUserId,values).subscribe(
       (item:{success:boolean})=>
-      {
-        console.log(values)
-      if(item.success) 
       { 
-        setTimeout(() => {
-          alert('Atama basarili')
-          window.location.reload()
-        }, 1000);
-      }
+        if(item.success) 
+        { 
+          setTimeout(() => {
+            alert('Atama basarili')
+            window.location.reload()
+          }, 1000);
+        }
     })
   }
   }
   
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/'; 
   }
 

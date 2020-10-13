@@ -11,8 +11,7 @@ import { func } from 'src/app/classes/func';
 export class ShowQuestionComponent implements OnInit {
   listQuestions:any[] = []
   constructor(private api:ApiService,private router:Router) {
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-      this.router.navigate(['/login']) 
+     
     api.getQuestions(this.router.url.split('/')[2]).subscribe(item=>{
      this.listQuestions=(new func().questionMaker(item))
     }) 

@@ -8,15 +8,12 @@ import { Router } from '@angular/router';
 })
 export class ListAnswerFilteredComponent implements OnInit {
   results : any[]=[]
-  constructor( private router:Router) {
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-    this.router.navigate(['/login']) 
-    this.results = (JSON.parse(sessionStorage.getItem('answers')));
-    console.log(this.results)
+  constructor( private router:Router) { 
+    this.results = (JSON.parse(sessionStorage.getItem('answers'))); 
    }
 
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
 

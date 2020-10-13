@@ -30,7 +30,7 @@ export class AddUserComponent implements OnInit {
     }  
   }
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
 }

@@ -31,8 +31,7 @@ export class ListUserResultsComponent implements OnInit {
   ];
 
   constructor(private api:ApiService,private router:Router) {
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-    this.router.navigate(['/login']) 
+     
     api.getTotalResult().subscribe((item:any[])=>{
      item.forEach(element => {
        this.barChartLabels.push(element.username)

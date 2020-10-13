@@ -17,7 +17,7 @@ export class CompleteComponent implements OnInit {
   }
 
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
 }

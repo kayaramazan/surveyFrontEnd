@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { Route, Router } from '@angular/router';  
-import { SurveyComponent } from '../survey/survey.component';
-import { func } from '../../classes/func';
-import { ThirdPartyDraggable } from '@fullcalendar/interaction';
+import { Route, Router } from '@angular/router';   
+import { func } from '../../classes/func'; 
 
 @Component({
   selector: 'app-admin-panel',
@@ -20,18 +18,13 @@ export class AdminPanelComponent implements OnInit {
     })
     this.api.getUser().subscribe(item=>{
       this.users=item
-    })
-    
-   
-
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-      this.router.navigate(['/login']) 
+    }) 
   }
 
   ngOnInit(): void {
   }
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
   anketSil(id)

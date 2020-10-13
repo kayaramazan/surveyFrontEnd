@@ -15,27 +15,24 @@ export class ShowResultsComponent implements OnInit {
   TutorialName = ""
   count = 0
   constructor(private api:ApiService,private router:Router) { 
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-    this.router.navigate(['/login']) 
+     
     this.api.getResultUser().subscribe(item=>{
       this.users = item  
-
-    console.log(this.users)
-    this.users.forEach(
-      element => 
-      {
-        this.api.getResults(element.id).subscribe((item:any) =>
-        { 
-          this.answers.push(item) 
-        }) 
+      this.users.forEach(
+        element => 
+        {
+          this.api.getResults(element.id).subscribe((item:any) =>
+          { 
+            this.answers.push(item) 
+          }) 
+        })
+  
       })
- 
-    })
   } 
   ngOnInit(): void {
   }
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
   showAnswer(captionId,id,userId)

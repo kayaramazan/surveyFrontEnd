@@ -15,9 +15,7 @@ export class CreatSurveyComponent implements OnInit {
     this.api.getCaptions().subscribe((result:any[]) =>{
       this.surveyCaptions = result
       console.log(this.surveyCaptions)
-    })
-    if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']!=1)
-      this.router.navigate(['/login']) 
+    }) 
    }
 
   ngOnInit(): void {
@@ -54,7 +52,7 @@ export class CreatSurveyComponent implements OnInit {
   }
 
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
 

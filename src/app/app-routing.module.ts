@@ -16,24 +16,26 @@ import { ListAnswerFilteredComponent } from './components/list-answer-filtered/l
 import { ShowAssignSurveyComponent } from './components/show-assign-survey/show-assign-survey.component';
 import { MyDoughnutChartComponent } from './components/my-doughnut-chart/my-doughnut-chart.component';
 import { ListUserResultsComponent } from './components/list-user-results/list-user-results.component';
+import { AuthGuard } from './helpers';
+import { AuthGuardAdmin } from './helpers/auth-admin.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'complete',component:CompleteComponent},
-  {path:'survey-assign',component:SurveyAssignComponent},
-  {path:'create-survey',component:CreatSurveyComponent},
-  {path:'show-results',component:ShowResultsComponent},
-  {path:'show-question/:id',component:ShowQuestionComponent},
-  {path:'add-user',component:AddUserComponent},
-  {path:'list-answer-filtered',component:ListAnswerFilteredComponent},
-  {path:'list-user-survey',component:ListUserSurveyComponent},
-  {path:'create-caption',component:CreateCaptionComponent},
-  {path:'admin',component:AdminPanelComponent},
-  {path:'survey/:id',component:SurveyComponent}, 
-  {path:'chart',component:MyDoughnutChartComponent},
-  {path:'list-user-results',component:ListUserResultsComponent},
-  {path:'show-assign-survey/:id',component:ShowAssignSurveyComponent}, 
+  {path:'login',component:LoginComponent,canActivate: [AuthGuard]},
+  {path:'complete',component:CompleteComponent,canActivate: [AuthGuard] },
+  {path:'list-user-survey',component:ListUserSurveyComponent,canActivate: [AuthGuard]},
+  {path:'survey-assign',component:SurveyAssignComponent,canActivate: [AuthGuardAdmin]},
+  {path:'create-survey',component:CreatSurveyComponent,canActivate: [AuthGuardAdmin]},
+  {path:'show-results',component:ShowResultsComponent,canActivate: [AuthGuardAdmin]},
+  {path:'show-question/:id',component:ShowQuestionComponent,canActivate: [AuthGuardAdmin]},
+  {path:'add-user',component:AddUserComponent,canActivate: [AuthGuardAdmin]},
+  {path:'list-answer-filtered',component:ListAnswerFilteredComponent,canActivate: [AuthGuardAdmin]},
+  {path:'create-caption',component:CreateCaptionComponent,canActivate: [AuthGuardAdmin]},
+  {path:'admin',component:AdminPanelComponent, canActivate:[AuthGuardAdmin]},
+  {path:'survey/:id',component:SurveyComponent,canActivate: [AuthGuard]}, 
+  {path:'chart',component:MyDoughnutChartComponent,canActivate: [AuthGuard]},
+  {path:'list-user-results',component:ListUserResultsComponent,canActivate: [AuthGuardAdmin]},
+  {path:'show-assign-survey/:id',component:ShowAssignSurveyComponent,canActivate: [AuthGuardAdmin]}, 
   {path:'**',component:HomeComponent}
 ];
 

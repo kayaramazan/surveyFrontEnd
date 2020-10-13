@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment'; 
+import { User } from '../models';
 
 HttpClient
 @Injectable({
@@ -10,6 +11,7 @@ HttpClient
 export class ApiService {
   
   private SERVER_URL = environment.SERVER_URL
+  
   constructor(private http:HttpClient) { }
   getUser(): Observable<any> { 
     return this.http.get(this.SERVER_URL+'/api/users');
@@ -31,8 +33,9 @@ export class ApiService {
     return this.http.post(this.SERVER_URL+'/api/survey/finalAnswer',{answers})
   }
   //Kullanicilarin yapmasi gereken anketleri ceker
-  getSurveyUser(): Observable<any> { 
-    let userId=JSON.parse(sessionStorage.getItem('loggedUser'))[0]['id']
+  getSurveyUser(): Observable<any> {  
+    console.log(User.currentUser[0].id)
+    let userId=User.currentUser[0].id
     return this.http.get(this.SERVER_URL+'/api/users/'+userId);
   }
   //Kullanicilara anket atama

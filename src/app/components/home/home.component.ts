@@ -1,47 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
-import { ResourceLoader } from '@angular/compiler';
-import { HeaderComponent } from '../header/header.component';
-ApiService
+import { Router, ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service'; 
+import { AuthenticationService } from '../../services/authentication.service'; 
+import { User } from 'src/app/models/user'; 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  loginError = ""
-  constructor(private router:Router,private api:ApiService) { 
-    if(sessionStorage.getItem('loggedUser'))
-    { 
-      console.log(sessionStorage.getItem('loggedUser'))
-
-      router.navigate(['/login'])
-    } 
+  title: string;
+  loginError = ""  
+  loading = false; 
+  error = ''; 
+  constructor(
+    private router:Router, 
+    private api:ApiService,
+    private authenticationService: AuthenticationService) { 
+      if(User.currentUser)
+        router.navigate(['/login'])
   }
 
   ngOnInit(): void {
+ 
   } 
-  onSubmit(data)  {
-    var header :HeaderComponent 
-    var result = this.api.login(data.username,data.password).subscribe(data => {
-      if(data)
-      {
-        sessionStorage.setItem('loggedUser',JSON.stringify(data)) 
-        JSON.parse(sessionStorage.getItem('loggedUser'))[0]['username']
-        if(JSON.parse(sessionStorage.getItem('loggedUser'))[0]['authority']==1)
-        {  
-          window.location.href='/admin';
-        }else
-         window.location.href='/login';
-    
-      }
-    }).add(()=>{
+  onSubmit(data)  {  
+    this.authenticationService.login(data.username, data.password) 
+    .subscribe(user => {  
+
+      localStorage.setItem('accesToken', user.result);  
+      User.currentUser =(parseJwt(user.result)) 
+      if(User.currentUser)
+      { 
+      localStorage.setItem('currentUser', User.currentUser[0].username); 
+      window.location.href = '/login' 
+      }else
       this.loginError="Kullanıcı adı veya şifre yanlış"
+      
+  })
+  function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
 
-    })
-
+    return JSON.parse(jsonPayload);
+  };
+        
     
+      
+
      
 
   }

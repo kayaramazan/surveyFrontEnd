@@ -11,10 +11,8 @@ export class HeaderComponent implements OnInit {
   adminMenu = false;
   userMenu = false
   constructor(private router : Router) {  
-   
-    if(!sessionStorage.getItem('loggedUser'))
-    router.navigate(['/']) 
-    this.loggedUser  =(sessionStorage.getItem('loggedUser'))? JSON.parse(sessionStorage.getItem('loggedUser'))[0]['username'] : ""
+    
+    this.loggedUser  =(localStorage.getItem('currentUser'))?localStorage.getItem('currentUser') : ""
   } 
   ngOnInit(): void {
   }

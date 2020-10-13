@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models';
 
 @Component({
   selector: 'app-list-user-survey',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class ListUserSurveyComponent implements OnInit {
 
   results:any[]= []
-  id = JSON.parse(sessionStorage.getItem('loggedUser'))[0]['id']
+  id = User.currentUser[0].id
 
   constructor(private api:ApiService,private router : Router) {
     this.showAnswer(this.id)
@@ -22,12 +23,11 @@ export class ListUserSurveyComponent implements OnInit {
   { 
     this.api.getResultsById(id).subscribe((item:any) =>
     {
-      this.results=item 
-      console.log(item)
+      this.results=item  
     }) 
   }
   logout(){
-    sessionStorage.clear()
+    localStorage.clear()
     window.location.href='/';
   }
 }

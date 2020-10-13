@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router'; 
 import { func } from 'src/app/classes/func';
+import { User } from 'src/app/models';
 
 @Component({
   selector: 'app-survey',
@@ -15,11 +16,9 @@ export class SurveyComponent implements OnInit {
   questionCount = 0 
   isSurveyComplete = "disabled"
   constructor(private api: ApiService,private router:Router) {
-    if(!sessionStorage.getItem('loggedUser')) 
-      router.navigate(['/'])
+   
    }
-  ngOnInit(): void {
-    console.log(sessionStorage.getItem('surveyCaptionId'))
+  ngOnInit(): void { 
     this.api.getQuestions(sessionStorage.getItem('surveyCaptionId')).subscribe((item: any[]) => { 
       this.listQuestions = this.questionMaker(item) 
     })
@@ -45,11 +44,10 @@ export class SurveyComponent implements OnInit {
     if(new func().confirmModal("Anket gönderilsin mi?"))
     {
     var surveyUserId = this.router.url.split('/')[2]
-    var userId  = JSON.parse(sessionStorage.getItem('loggedUser'))[0]['id']
+    var userId  = User.currentUser[0].id
     var surveyCaptionId  = sessionStorage.getItem('surveyCaptionId')
 
     var answers = {results:this.selectedAnswers,surveyUserId:surveyUserId,userId:userId,surveyCaptionId:surveyCaptionId } 
-    console.log(answers)
     this.api.sendSurvey(answers).subscribe((result:{succes:boolean}) =>
       {
         if(result.succes){  
@@ -64,14 +62,12 @@ export class SurveyComponent implements OnInit {
 
     
       if(this.selectedAnswers.filter(e => e.questionId == item.questionId).length > 0)
-      {
-        console.log('silinecek konum',this.selectedAnswers.findIndex(e => e.questionId == item.questionId))
+      { 
         this.selectedAnswers.splice(this.selectedAnswers.findIndex(e => e.questionId == item.questionId),1)
         this.selectedAnswers.push(item)
       }
     else
-      this.selectedAnswers.push(item)
-      console.log(this.selectedAnswers)
+      this.selectedAnswers.push(item) 
       if(this.selectedAnswers.length == this.questionCount)
       {
         this.isSurveyComplete="" 
