@@ -1,7 +1,7 @@
 
   
       <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-primary elevation-4 col-md-2" style="position: fixed">
+      <aside *ngIf="loggedUser else elseBlock" class="main-sidebar sidebar-dark-primary col-md-2" style="position: fixed">
         <!-- Brand Logo -->
         <a routerLink="/login" class="brand-link">
           <img src="https://www.kentkart.com/wp-content/uploads/2017/02/logo.png" alt="AdminLTE Logo" class="brand-image elevation-3"
@@ -26,4 +26,12 @@
 
         <!-- /.sidebar -->
       </aside> 
+     
+      <ng-template #elseBlock >
+        <div class="container col-md-4 h-50 text-center">
+          <img class="h-50" src="https://www.kentkart.com/wp-content/uploads/2017/02/logo.png" alt="Kentkart Logo">
+
+        </div>
+      </ng-template>
+
      

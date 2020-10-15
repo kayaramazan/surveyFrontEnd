@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router'; 
 import { User } from 'src/app/models';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,12 @@ import { User } from 'src/app/models';
 })
 export class LoginComponent implements OnInit {
   
-  constructor(private api:ApiService,private router : Router) {   
-    if(User.currentUser[0].authority == User.authReqAdmin)
+  constructor(private api:ApiService,private router : Router) {  
+    
+     if(!User.currentUser)
+     { 
+      this.router.navigate(['/']) 
+     }else if(User.currentUser[0].authority == User.authReqAdmin)
       {  
         this.router.navigate(['/admin']) 
       }
@@ -32,7 +37,6 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['survey',id])
   }
   logout(){
-    
     localStorage.clear()
     window.location.href='/';
   

@@ -1,7 +1,7 @@
 
 <app-menu></app-menu> 
 <div class="container col-md-7 h-50"> 
-<div class="card" *ngIf="userSurveys.length">
+<div class="card" *ngIf="userSurveys.length else elseBlock">
         <div class="card-header">
           <h3 class="card-title">Atanmis Anketler</h3>
         </div>
@@ -38,5 +38,5 @@
      
       </div>
       </div>
-
+<ng-template #elseBlock>Henuz Anket Atanmamis !!!</ng-template>
 <button  class="btn btn-danger cikis"  (click)="logout()">Çıkış Yap</button>

@@ -5,10 +5,8 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
-  @Input() menuType: any;
-  constructor() {
-    console.log('calisti',this.menuType)
+export class MenuComponent implements OnInit { 
+  constructor() { 
    }
 
   ngOnInit(): void {

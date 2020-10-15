@@ -38,7 +38,7 @@ export class ListUserResultsComponent implements OnInit {
        this.barChartData[0].data.push(element.qCount)
        this.barChartData[1].data.push(element.score)
      });
-     this.results=item
+     this.results=item 
     })
     
    }
@@ -69,5 +69,9 @@ export class ListUserResultsComponent implements OnInit {
         this.barChartData[1].data.push(element.score)
       });
      })
+  }
+  cevaplariGor(id)
+  {
+    console.log(id)
   }
 }

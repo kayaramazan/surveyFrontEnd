@@ -4,8 +4,8 @@
 <div class="card" *ngFor="let item of listQuestions">
     <span>
             <div class="card-header h4">
-            <span *ngIf="item.soru else elseBlock"><strong> Soru : {{item.soru}}</strong></span>
-                    
+            <span *ngIf="item.soru else elseBlock"><strong> Soru : {{item.soru}}</strong>   </span>
+                   
                   </div>
     </span> 
     <ng-template #elseBlock> 

@@ -28,15 +28,19 @@ export class HomeComponent implements OnInit {
   onSubmit(data)  {  
     this.authenticationService.login(data.username, data.password) 
     .subscribe(user => {  
-
+     if(user.err) 
+      this.loginError="Kullanıcı adı veya şifre yanlış"
+     else
+     {
       localStorage.setItem('accesToken', user.result);  
       User.currentUser =(parseJwt(user.result)) 
       if(User.currentUser)
       { 
       localStorage.setItem('currentUser', User.currentUser[0].username); 
       window.location.href = '/login' 
-      }else
-      this.loginError="Kullanıcı adı veya şifre yanlış"
+      }
+     }
+       
       
   })
   function parseJwt (token) {

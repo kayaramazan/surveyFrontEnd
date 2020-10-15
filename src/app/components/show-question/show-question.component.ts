@@ -14,10 +14,10 @@ export class ShowQuestionComponent implements OnInit {
      
     api.getQuestions(this.router.url.split('/')[2]).subscribe(item=>{
      this.listQuestions=(new func().questionMaker(item))
-    }) 
+    })
+    
    }
 
   ngOnInit(): void {
-  }
-  
+  } 
 }
