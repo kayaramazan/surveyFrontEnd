@@ -66,6 +66,9 @@ export class ApiService {
   getResultsById(id){
     return this.http.get(this.SERVER_URL+'/api/users/resultsById/'+id)
   }
+  listAnswers(id){
+    return this.http.get(this.SERVER_URL+'/api/users/listAnswers/'+id)
+  }
   getResultsFilter(post){
     return this.http.post(this.SERVER_URL+'/api/users/results',post)
   }

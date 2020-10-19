@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';  
 import { HomeComponent } from './components/home/home.component';
 import { SurveyComponent } from './components/survey/survey.component';
-import {FormsModule} from '@angular/forms/';
+import { FormsModule } from '@angular/forms/';
 import { CompleteComponent } from './components/complete/complete.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { SurveyAssignComponent } from './components/survey-assign/survey-assign.component';
@@ -23,7 +23,9 @@ import { ListAnswerFilteredComponent } from './components/list-answer-filtered/l
 import { ShowAssignSurveyComponent } from './components/show-assign-survey/show-assign-survey.component'; 
 import { ChartsModule } from 'ng2-charts';
 import { MyDoughnutChartComponent } from './components/my-doughnut-chart/my-doughnut-chart.component';
-import { ListUserResultsComponent } from './components/list-user-results/list-user-results.component'; 
+import { ListUserResultsComponent } from './components/list-user-results/list-user-results.component';
+import { ListAnswersComponent } from './components/list-answers/list-answers.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,8 @@ import { ListUserResultsComponent } from './components/list-user-results/list-us
      ListAnswerFilteredComponent,
      ShowAssignSurveyComponent,
      MyDoughnutChartComponent,
-     ListUserResultsComponent
+     ListUserResultsComponent,
+     ListAnswersComponent
   ],
   imports: [
     BrowserModule,

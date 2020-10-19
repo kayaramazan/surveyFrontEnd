@@ -16,8 +16,10 @@ import { ListAnswerFilteredComponent } from './components/list-answer-filtered/l
 import { ShowAssignSurveyComponent } from './components/show-assign-survey/show-assign-survey.component';
 import { MyDoughnutChartComponent } from './components/my-doughnut-chart/my-doughnut-chart.component';
 import { ListUserResultsComponent } from './components/list-user-results/list-user-results.component';
+import { ListAnswersComponent } from './components/list-answers/list-answers.component';
 import { AuthGuard } from './helpers';
 import { AuthGuardAdmin } from './helpers/auth-admin.guard';
+import { UnknownComponent } from './components/unknown/unknown.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -35,8 +37,9 @@ const routes: Routes = [
   {path:'survey/:id',component:SurveyComponent,canActivate: [AuthGuard]}, 
   {path:'chart',component:MyDoughnutChartComponent,canActivate: [AuthGuard]},
   {path:'list-user-results',component:ListUserResultsComponent,canActivate: [AuthGuardAdmin]},
+  {path:'list-answers/:id',component:ListAnswersComponent, canActivate:[AuthGuardAdmin]},
   {path:'show-assign-survey/:id',component:ShowAssignSurveyComponent,canActivate: [AuthGuardAdmin]}, 
-  {path:'**',component:HomeComponent}
+  {path:'**',component:UnknownComponent}
 ];
 
 @NgModule({

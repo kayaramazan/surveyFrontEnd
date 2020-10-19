@@ -19,13 +19,9 @@ export class AddUserComponent implements OnInit {
     if(new func().confirmModal())
     {
       this.api.addUser(values).subscribe(result =>{
-        if(result.success)
-        { 
-          window.location.reload();
-        }
-        else{
-        alert('Bu kullanici adi zaten mevcut')
-        }
+        
+        (result.success) ? window.location.reload() : alert('Bu kullanici adi zaten mevcut')
+        
       })
     }  
   }

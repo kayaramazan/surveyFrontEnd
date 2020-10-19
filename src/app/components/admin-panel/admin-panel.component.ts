@@ -23,7 +23,8 @@ export class AdminPanelComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  logout(){
+  logout()
+  {
     localStorage.clear()
     window.location.href='/';
   }
