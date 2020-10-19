@@ -19,7 +19,7 @@
               <tbody>
                   <tr *ngFor="let item of titles">
                       <td>{{item.surveyTitle}}</td>
-                      <td>{{item.createdDate}}
+                      <td>{{item.createdDate | date}}
                       </td>
                       <td><button  class="btn btn-primary"  (click)="sorulariGor(item.id)">Soruları Gör</button> &nbsp;
                           <button  class="btn btn-info"  (click)="soruEkle()">Soru Ekle</button> &nbsp;
@@ -33,7 +33,7 @@
           </div>
        
         </div>
-        <a  class="btn btn-success " routerLink="/create-caption"  ><i class="nav-icon far fa-plus"></i> Anket Olustur</a>
+        <a  class="btn btn-success " routerLink="/create-caption"  ><i class="nav-icon fa fa-plus"></i> Anket Olustur</a>
         <hr>
         <div class="card">
             <div class="card-header">
@@ -67,7 +67,7 @@
             </div>
          
           </div>
-          <a  class="btn btn-success " routerLink="/add-user"  ><i class="nav-icon far fa-plus"></i> Kullanici Olustur</a>
+          <a  class="btn btn-success " routerLink="/add-user"  ><i class="nav-icon fa fa-plus"></i> Kullanici Olustur</a>
         <br><br>
         <button  class="btn btn-danger cikis"  (click)="logout()">Çıkış Yap</button>
         

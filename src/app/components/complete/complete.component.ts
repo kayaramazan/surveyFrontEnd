@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 export class CompleteComponent implements OnInit {
 
   constructor(private router:Router) { 
-    if(!sessionStorage.getItem('loggedUser'))
-      router.navigate(['/'])
+     
   }
 
   ngOnInit(): void {

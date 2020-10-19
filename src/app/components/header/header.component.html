@@ -12,9 +12,9 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-          <div *ngIf="loggedUser" class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div *ngIf="loggedUser" class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: baseline;">
             <div class="image">
-              <img src="/assets/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+              <div class="img-circle elevation-2 titleH" alt="User Image">{{loggedUser[0] | uppercase }}</div>
             </div>
             <div class="info" >
               <a href="#" class="d-block">{{loggedUser | uppercase}}</a>
