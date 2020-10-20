@@ -22,12 +22,7 @@ export class AdminPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-  logout()
-  {
-    localStorage.clear()
-    window.location.href='/';
-  }
+  } 
   anketSil(id)
   {
    if(new func().confirmModal())

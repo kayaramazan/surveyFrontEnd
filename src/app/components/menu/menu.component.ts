@@ -7,9 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit { 
   constructor() { 
-   }
+   } 
 
   ngOnInit(): void {
   }
 
+  logout(){ 
+    localStorage.clear()
+    window.location.href='/';
+  }
 }

@@ -50,10 +50,6 @@ export class CreatSurveyComponent implements OnInit {
       })
     }
   }
-
-  logout(){
-    localStorage.clear()
-    window.location.href='/';
-  }
+ 
 
 }

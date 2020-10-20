@@ -19,8 +19,4 @@ export class ListAnswersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  logout(){ 
-    localStorage.clear()
-    window.location.href='/';
-  }
 }

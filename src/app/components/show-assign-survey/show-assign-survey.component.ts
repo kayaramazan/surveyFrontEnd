@@ -29,11 +29,7 @@ export class ShowAssignSurveyComponent implements OnInit {
         }
       }) 
      }
-   }
-   logout(){
-    localStorage.clear()
-    window.location.href='/';
-  }
+   } 
   ngOnInit(): void {
   }
 

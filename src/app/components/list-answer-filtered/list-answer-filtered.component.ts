@@ -11,11 +11,7 @@ export class ListAnswerFilteredComponent implements OnInit {
   constructor( private router:Router) { 
     this.results = (JSON.parse(sessionStorage.getItem('answers'))); 
    }
-
-  logout(){
-    localStorage.clear()
-    window.location.href='/';
-  }
+ 
 
   ngOnInit(): void {
   }

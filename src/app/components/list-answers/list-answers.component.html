@@ -8,12 +8,11 @@
           </div>
           <div class="card-body">
           <blockquote class="blockquote mb-0">
-              <p>{{item.surveyQuestion}} | {{item.surveyTitle}} </p>
+              <p>{{item.surveyQuestion}} | {{item.surveyTitle}} - {{item.date | date}} </p>
               <footer class="blockquote-footer">" {{item.answer}} " | {{item.score}} </footer>
           </blockquote>
           </div>
       </div> 
 </span>
-<button  class="btn btn-danger cikis"  (click)="logout()">Çıkış Yap</button>
 
 </div>

@@ -12,7 +12,7 @@ export class AddUserComponent implements OnInit {
 
   constructor(private api:ApiService,private router:Router) { 
    }
-
+ 
   ngOnInit(): void {
   }
   onSubmit(values){
@@ -21,12 +21,8 @@ export class AddUserComponent implements OnInit {
       this.api.addUser(values).subscribe(result =>{
         
         (result.success) ? window.location.reload() : alert('Bu kullanici adi zaten mevcut')
-        
+          
       })
     }  
-  }
-  logout(){
-    localStorage.clear()
-    window.location.href='/';
-  }
+  } 
 }

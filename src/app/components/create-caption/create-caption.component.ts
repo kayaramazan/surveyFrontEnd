@@ -34,9 +34,5 @@ export class CreateCaptionComponent implements OnInit {
       })
     }
   }
-
-  logout(){
-    localStorage.clear()
-    window.location.href='/';
-  }
+ 
 }

@@ -31,10 +31,6 @@ export class ShowResultsComponent implements OnInit {
   } 
   ngOnInit(): void {
   }
-  logout(){
-    localStorage.clear()
-    window.location.href='/';
-  }
   showAnswer(captionId,id,userId)
   {  
     var post={captionId,id,userId} 
